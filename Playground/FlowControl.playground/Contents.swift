@@ -91,3 +91,75 @@ for i in closedRange {
         print("구구단 -> \(i) * \(j) = \(i * j)")
     }
 }
+
+// --- Switch
+
+let num = 10
+
+//switch num {
+//case 0 :
+//    print("--> 0 입니다.")
+//case 10 :
+//    print("--> 10 입니다.")
+//default :
+//    print("--> 그 외 입니다.")
+//}
+
+// 구간일 경우 closed range를 사용할 수 있다.
+switch num {
+case 0 :
+    print("--> 0입니다.")
+case 0...10 :
+    print("--> 0~10입니다.")
+case 10 :
+    print("--> 10 입니다.")
+default :
+    print("--> 그 외 입니다.")
+}
+
+// String
+let pet = "bird"
+switch pet {
+case "dog", "cat":
+    print("---> 댕댕이나 냥이입니다.")
+case "bird" :
+    print("---> 짹짹입니다.")
+default :
+    print("---> 잘 모르겠어요.")
+}
+
+// Where 문 사용
+let number = 20
+switch number {
+case _ where number % 2 == 0 :
+    print("---> 짝수")
+default :
+    print("---> 홀수")
+}
+
+// Tuple 사용
+let coordinate = (x: 10, y: 10)
+switch coordinate {
+case (0, 0) :
+    print("원점입니다.")
+case (0, _) :
+    print ("y축에 있습니다.")
+case (_, 0) :
+    print("x축에 있습니다.")
+default :
+    print("좌표 어딘가")
+}
+
+// 값이 궁금하다면
+switch coordinate {
+case (0, 0) :
+    print("원점입니다.")
+case (0, let y) :
+    print ("y축에 있습니다. y: \(y)")
+case (let x, 0) :
+    print("x축에 있습니다. x : \(x)")
+case (let x, let y) where x == y:
+    print("x와 y가 같은 케이스 , x, y: \(x),\(y) ")
+case (let x, let y) :
+    print("좌표 어딘가, x, y: \(x),\(y) ")
+}
