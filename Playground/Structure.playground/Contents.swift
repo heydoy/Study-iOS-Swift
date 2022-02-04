@@ -34,5 +34,13 @@ func printClosestStore(currentLocation:(x: Int, y: Int), stores:[(x: Int, y: Int
 }
 
 // Stores array 세팅, 현재 내 위치 세팅
+let myLocation = (x: 2, y: 2)
+let stores = [store1, store2, store3]
 
-// printClosestStore 함수 이용해서 현재 가장 가까운 스토어 출력하기 
+// printClosestStore 함수 이용해서 현재 가장 가까운 스토어 출력하기
+printClosestStore(currentLocation: myLocation, stores: stores )
+
+
+// Improve Code
+// - Make Location struct
+// - Make Store struct
