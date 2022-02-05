@@ -9,14 +9,14 @@ import UIKit
 // CustomStringConvertible
 
 struct Lecture: CustomStringConvertible{
+    let name : String
+    let instructor : String
+    let numberOfStudents : Int
+    
     var description: String {
         // 이 struct에 대한 description을 작성해서 리턴
         return "Title: \(name), Instructor: \(instructor)"
     }
-    
-    let name : String
-    let instructor : String
-    let numberOfStudents : Int
 }
 
 
