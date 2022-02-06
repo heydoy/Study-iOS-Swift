@@ -2,8 +2,24 @@ import UIKit
 
 struct Person {
     // Stored properties
-    var firstName: String
+    var firstName: String {
+        willSet {
+            print("willSet: \(firstName) ---> \(newValue)")
+        }
+        didSet {
+            print("didSet: \(oldValue) ---> \(firstName)")
+        }
+    }
     var lastName: String
+    
+    // Lazy Property
+    lazy var isPopular: Bool = {
+        if fullName == "Jamie Park"{
+            return true
+        } else {
+            return false
+        }
+    }()
     
     // Computed properties
     // 컴퓨티드 프로퍼티는 var 키워드만 가능. Read Only
@@ -43,3 +59,6 @@ person.firstName
 person.lastName
 
 Person.isAlien
+
+person.isPopular
+
