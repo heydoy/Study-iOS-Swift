@@ -131,20 +131,20 @@ class ListCell: UITableViewCell {
 }
 
 
-struct BountyInfo {
-    let name: String
-    let bounty: Int
-    
-    var image: UIImage? {
-        return UIImage(named: "\(name).jpg")
-    }
-    
-    
-    init(name: String, bounty: Int){
-        self.name = name
-        self.bounty = bounty
-    }
-}
+//struct BountyInfo {
+//    let name: String
+//    let bounty: Int
+//    
+//    var image: UIImage? {
+//        return UIImage(named: "\(name).jpg")
+//    }
+//    
+//    
+//    init(name: String, bounty: Int){
+//        self.name = name
+//        self.bounty = bounty
+//    }
+//}
 
 class BountyViewModel {
     // ViewModel은 Model을 가지고 있어야한다.
