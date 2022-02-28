@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  BountyList
+//  UpgradedBountyList
 //
 //  Created by Doy Kim on 2022/02/11.
 //

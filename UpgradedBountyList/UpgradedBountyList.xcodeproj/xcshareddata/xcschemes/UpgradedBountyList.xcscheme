@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A28293D927B6931000FF3813"
-               BuildableName = "BountyList.app"
+               BuildableName = "UpgradedBountyList.app"
                BlueprintName = "UpgradedBountyList"
                ReferencedContainer = "container:UpgradedBountyList.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A28293D927B6931000FF3813"
-            BuildableName = "BountyList.app"
+            BuildableName = "UpgradedBountyList.app"
             BlueprintName = "UpgradedBountyList"
             ReferencedContainer = "container:UpgradedBountyList.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A28293D927B6931000FF3813"
-            BuildableName = "BountyList.app"
+            BuildableName = "UpgradedBountyList.app"
             BlueprintName = "UpgradedBountyList"
             ReferencedContainer = "container:UpgradedBountyList.xcodeproj">
          </BuildableReference>
