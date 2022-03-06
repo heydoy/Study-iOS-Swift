@@ -37,12 +37,9 @@ class BountyViewController: UIViewController, UICollectionViewDataSource, UIColl
             if let index = sender as? Int { // Integer로 다운캐스팅
                 let bountyInfo = viewModel.bountyInfo(at: index)
                 vc?.viewModel.update(model: bountyInfo)
-
-                
             }
         }
     }
-    
     
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -50,66 +47,45 @@ class BountyViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     //---> UICollectionViewDataSource
     // 몇 개를 보여줄 지
-    // 셀을 어떻게  표현할 지
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // 데이터배열의 요소갯수를 반환해준다.
+        return viewModel.numberOfBountyInfoList
+    }
+    
+    // 셀을 어떻게 표현할 지
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell
+        else  {
+            return UICollectionViewCell()
+        }
+        
+        //콜렉션 뷰이므로 row가 아니라 indexPath.item ,아이템을 가져와야 한다.
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.item)
+        cell.update(info: bountyInfo)
+        
+        return cell
+    }
     
     //  ---> UICollectionViewDelegate
     // 셀이 클릭되었을 때 어떻게 처리하는지
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("--->\(indexPath.item)")
+        performSegue(withIdentifier: "showDetail", sender: indexPath.item)
+    }
     
     //  ---> UICollectionViewDelegateFlowLayout
     // Cell 사이즈를 계산 (다양한 디바이스에서 일관적인 디자인을 보여주기 위해)
     
-    
-    
-    
-//    // ---> UITableViewDataSource
-//
-//    // 테이블 row 갯수
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // 데이터 배열의 요소 갯수
-//        return viewModel.numberOfBountyInfoList
-//
-//    }
-//
-//    // 어떻게 테이블 뷰를 표현할 것인지
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
-//            return UITableViewCell()
-//        }
-//        // indexPath는 위치정보를 가지고 있다.
-//
-//        // 셀에 데이터를 세팅
-//        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
-//
-//        cell.update(info: bountyInfo)
-//
-//        return cell
-//    }
-//
-//    // ---> UITableViewDelegate
-//
-//    // 셀(Row)이 클릭되었을 때의 액션
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
-//        // 몇번째 클릭되어있는지 콘솔에 출력
-//        //print("--> \(indexPath.row)")
-//    }
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 10
+        let textAreaHeight: CGFloat = 65
+        
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing)/2
+        let height: CGFloat = (width * 10/7) + textAreaHeight
 
-class ListCell: UITableViewCell {
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bountyLabel: UILabel!
-    
-    func update(info: BountyInfo){
-        imgView.image = info.image
-        nameLabel.text = info.name
-        bountyLabel.text = "\(info.bounty)"
+        return CGSize(width: width, height: height)
     }
 }
-
 
 class BountyViewModel {
     // ViewModel은 Model을 가지고 있어야한다.
@@ -133,9 +109,19 @@ class BountyViewModel {
     func bountyInfo(at index: Int) -> BountyInfo {
         return bountyInfoList[index]
     }
-    
 }
 
+class GridCell: UICollectionViewCell {
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var bountyLabel: UILabel!
+    
+    func update(info: BountyInfo){
+        imgView.image = info.image
+        nameLabel.text = info.name
+        bountyLabel.text = "\(info.bounty)"
+    }
+}
 
 
 
