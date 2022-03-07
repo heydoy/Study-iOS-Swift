@@ -36,11 +36,7 @@ class DetailViewController: UIViewController {
     
     
     let viewModel = DetailViewModel()
-    
-//    var name: String?
-//    var bounty: Int?
-    
-//    var bountyInfo: BountyInfo?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,40 +50,82 @@ class DetailViewController: UIViewController {
     }
     
     private func prepareAnimation() {
-        nameLabelCenterX.constant = view.bounds.width
-        bountyLabelCenterX.constant = view.bounds.width
+        // view property를 이용하기 때문에 constraint은 쓰지않는다.
+//        nameLabelCenterX.constant = view.bounds.width
+//        bountyLabelCenterX.constant = view.bounds.width
+        
+        nameLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        bountyLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        
+        nameLabel.alpha = 0
+        bountyLabel.alpha = 0
     }
     
+    
     private func showAnimation() {
-        nameLabelCenterX.constant = 0
-        bountyLabelCenterX.constant = 0
-        
-//        UIView.animate(withDuration: 0.3) {
-//            self.view.layoutIfNeeded()
-//        }
-        
-//        UIView.animate(withDuration: 0.3,
-//                       delay: 0.1,
-//                       options: .curveEaseIn,
+//        // constraint를 이용한 애니메이션
+//        nameLabelCenterX.constant = 0
+//        bountyLabelCenterX.constant = 0
+//
+////         //매우 간단한 버전
+////        UIView.animate(withDuration: 0.3) {
+////            self.view.layoutIfNeeded()
+////        }
+//
+////         //조금 복잡해진 버전
+////        UIView.animate(withDuration: 0.3,
+////                       delay: 0.1,
+////                       options: .curveEaseIn,
+////                       animations: {
+////            self.view.layoutIfNeeded() },
+////                       completion: nil)
+//
+//        // 최종 버전
+//        UIView.animate(withDuration: 0.5,
+//                       delay: 0.2,
+//                       usingSpringWithDamping: 0.6,
+//                       initialSpringVelocity: 2,
+//                       options: .allowUserInteraction,
 //                       animations: {
-//            self.view.layoutIfNeeded() },
+//            self.view.layoutIfNeeded()  },
 //                       completion: nil)
+//
+//        UIView.transition(with: imgView,
+//                          duration: 0.3,
+//                          options: .transitionFlipFromLeft,
+//                          animations: nil,
+//                          completion: nil)
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.2,
+        //  이름 레이블 애니메이팅
+        UIView.animate(withDuration: 1,
+                       delay: 0.1,
                        usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 2,
                        options: .allowUserInteraction,
                        animations: {
-            self.view.layoutIfNeeded()  },
+            self.nameLabel.transform = CGAffineTransform.identity
+            self.nameLabel.alpha = 1
+        },
                        completion: nil)
         
+        // 바운티 레이블 애니메이팅 (0.2초 딜레이)
+        UIView.animate(withDuration: 1,
+                       delay: 0.3,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 2,
+                       options: .allowUserInteraction,
+                       animations: {
+            self.bountyLabel.transform = CGAffineTransform.identity
+            self.bountyLabel.alpha = 1
+        },
+                       completion: nil)
+        
+        // 이미지 플립핑
         UIView.transition(with: imgView,
                           duration: 0.3,
                           options: .transitionFlipFromLeft,
                           animations: nil,
                           completion: nil)
-        
     }
     
     
