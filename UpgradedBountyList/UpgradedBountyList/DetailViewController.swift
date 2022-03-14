@@ -110,7 +110,7 @@ class DetailViewController: UIViewController {
         
         // 바운티 레이블 애니메이팅 (0.2초 딜레이)
         UIView.animate(withDuration: 1,
-                       delay: 0.3,
+                       delay: 0.3   ,
                        usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 2,
                        options: .allowUserInteraction,
