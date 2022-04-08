@@ -17,13 +17,16 @@ struct Todo: Codable, Equatable {
     var isToday: Bool
     
     mutating func update(isDone: Bool, detail: String, isToday: Bool) {
-        // TODO: update 로직 추가
+        // TODO: update 로직 추가 (Done)
+        self.isDone = isDone
+        self.detail = detail
+        self.isToday = isToday
         
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
-        // TODO: 동등 조건 추가
-        return true
+        // TODO: 동등 조건 추가 (Done)
+        return lhs.id == rhs.id
     }
 }
 
